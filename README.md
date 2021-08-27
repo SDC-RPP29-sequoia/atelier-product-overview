@@ -32,7 +32,7 @@ API service for handling the 'Product Overview' module of the Atelier shopping a
 # Continuous Integration (IP)
 Basic test of JavaScript continuous integration uses [CircleCI](https://circleci.com/) to run the tests, and [Coveralls](https://coveralls.io/) for reporting test coverage.
 
-Circle CI: [![rpp29-fec-gouda](https://circleci.com/gh/rpp29-fec-gouda/atelier.svg?style=svg)](https://app.circleci.com/pipelines/github/rpp29-fec-gouda/atelier)
+Circle CI: [![SDC-RPP29-sequoia/atelier-product-overview](https://circleci.com/gh/SDC-RPP29-sequoia/atelier-product-overview.svg?style=svg)](https://app.circleci.com/pipelines/github/SDC-RPP29-sequoia/atelier-product-overview)
 
 Coveralls: [![Coverage Status](https://coveralls.io/repos/github/rpp29-fec-gouda/atelier/badge.svg)](https://coveralls.io/github/rpp29-fec-gouda/atelier)
 
