@@ -34,7 +34,7 @@ Basic test of JavaScript continuous integration uses [CircleCI](https://circleci
 
 Circle CI: [![SDC-RPP29-sequoia/atelier-product-overview](https://circleci.com/gh/SDC-RPP29-sequoia/atelier-product-overview.svg?style=svg)](https://app.circleci.com/pipelines/github/SDC-RPP29-sequoia/atelier-product-overview)
 
-Coveralls: [![Coverage Status](https://coveralls.io/repos/github/rpp29-fec-gouda/atelier/badge.svg)](https://coveralls.io/github/rpp29-fec-gouda/atelier)
+Coveralls: [![Coverage Status](https://coveralls.io/repos/github/SDC-RPP29-sequoia/atelier-product-overview/badge.svg?branch=main)](https://coveralls.io/github/SDC-RPP29-sequoia/atelier-product-overview?branch=main)
 
 # SonarCloud (IP)
 Additionally, [SonarCloud](https://sonarcloud.io/projects) is used for an overall check of code quality.
