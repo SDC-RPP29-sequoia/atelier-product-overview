@@ -35,7 +35,8 @@ jobs:
           command: npm test
       - store_artifacts:
           path: coverage
-      - coveralls/upload
+      - coveralls/upload:
+          path_to_lcov: .tests/coverage/lcov.info | coveralls
     parallelism: 2
 
 workflows:
