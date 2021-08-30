@@ -15,6 +15,13 @@
     "type": "git",
     "url": "git+https://github.com/SDC-RPP29-sequoia/atelier-product-overview.git"
   },
+  "keywords": [
+    "express",
+    "atelier",
+    "hack reactor",
+    "mern",
+    "mysql"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
