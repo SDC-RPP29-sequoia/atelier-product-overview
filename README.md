@@ -51,7 +51,7 @@ Security: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?projec
 
 Lines of Code: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-product-overview&metric=ncloc)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-product-overview)
 
-Coverage: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-product-overview&metric=coverage)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-product-overview)
+Coverage: [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-product-overview&metric=coverage)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-product-overview)
 
 Bugs: [![SonarCloud](https://sonarcloud.io/api/project_badges/measure?project=SDC-RPP29-sequoia_atelier-product-overview&metric=bugs)](https://sonarcloud.io/dashboard?id=SDC-RPP29-sequoia_atelier-product-overview)
 
