@@ -1,6 +1,6 @@
 /* eslint-disable func-style */
-function test(a, b) {
+function summer(a, b) {
   return a + b;
 }
 
-module.exports = test;
+module.exports = summer;
