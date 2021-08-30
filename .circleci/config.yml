@@ -9,7 +9,7 @@ orbs:
   # See the orb documentation here: https://circleci.com/developer/orbs/orb/circleci/node
   # Also: https://circleci.com/developer/orbs/orb/coveralls/coveralls
   node: circleci/node@4.1
-  # coveralls: coveralls/coveralls@1.0.6
+  coveralls: coveralls/coveralls@1.0.6
 
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
@@ -24,6 +24,8 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
       # The orb install-packages step will also automatically cache them for faster future runs.
       - node/install-packages
@@ -31,12 +33,22 @@ jobs:
       # - node/install-packages:
       #     pkg-manager: yarn
       - run:
+          name: install-npm-dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+              - ./node_modules
+      - run:
           name: Run tests
           command: npm test
       - store_artifacts:
           path: coverage
-    #   - coveralls/upload
-    # parallelism: 2
+      - run:
+          name: code-coverage
+          command: npm run coveralls
+      - coveralls/upload
+    parallelism: 2
 
 workflows:
   # Below is the definition of your workflow.
