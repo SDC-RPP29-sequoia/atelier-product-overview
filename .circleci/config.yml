@@ -10,6 +10,7 @@ orbs:
   # Also: https://circleci.com/developer/orbs/orb/coveralls/coveralls
   node: circleci/node@4.7.0
   coveralls: coveralls/coveralls@1.0.6
+  codecov: codecov/codecov@3.0.0
 
 jobs:
   # Below is the definition of your job to build and test your app, you can rename and customize it as you want.
