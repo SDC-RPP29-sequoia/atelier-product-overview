@@ -24,8 +24,6 @@ jobs:
     steps:
       # Checkout the code as the first step.
       - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
       # The orb install-packages step will also automatically cache them for faster future runs.
       - node/install-packages
@@ -33,23 +31,10 @@ jobs:
       # - node/install-packages:
       #     pkg-manager: yarn
       - run:
-          name: install-npm-dependencies
-          command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-              - ./node_modules
-      - run:
           name: Run tests
           command: npm test
       - store_artifacts:
           path: coverage
-      - run:
-          name: code-coverage
-          command: npm run coveralls
-      - coveralls/upload:
-          parallel: true 
-          path_to_lcov: tests/coverage/lcov.info 
 
 workflows:
   # Below is the definition of your workflow.
