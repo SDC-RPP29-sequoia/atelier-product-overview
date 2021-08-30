@@ -37,16 +37,7 @@ jobs:
           path: coverage
       - run:
           name: code-coverage
-          command: npm run coveralls
-      # - coveralls/upload:
-      #     path_to_lcov: tests/coverage/lcov.info
-      #     token: bPJnzII58bbKPehf9t4GnxZ9K0Bi3viQZ
-      #     flag_name: Integration Tests
-      #     parallel: true
-      #     verbose: true
-
-    #   - coveralls/upload
-    # parallelism: 2
+          command: npm run test:coveralls
 
 workflows:
   # Below is the definition of your workflow.
