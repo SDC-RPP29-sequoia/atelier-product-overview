@@ -4,11 +4,12 @@
   "description": "API service for handling the 'Product Overview' module of the Atelier shopping app.",
   "main": "index.js",
   "scripts": {
+    "test:cov": "jest && codecov",
     "test": "jest --coverage --testResultsProcessor=jest-sonar-reporter",
     "test:test": "node --harmony node_modules/.bin/jest --coverage && cat ./tests/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "test-init": "jest --init",
     "test:coveralls": "jest --coverage && coveralls < ./tests/coverage/lcov.info && cat ./tests/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls",
+    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls && coveralls < ./tests/coverage/lcov.info",
     "start": "nodemon server.js",
     "build": "npx babel . --out-dir ./compiled --source-maps inline --ignore=node_modules,compiled --watch",
     "dev": "npm run build & npm run start & npm run test"

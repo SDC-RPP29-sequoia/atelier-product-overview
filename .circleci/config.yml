@@ -26,6 +26,7 @@ jobs:
       - checkout
       # Next, the node orb's install-packages step will install the dependencies from a package.json.
       # The orb install-packages step will also automatically cache them for faster future runs.
+      - npm install -g codecov
       - node/install-packages
       # If you are using yarn instead npm, remove the line above and uncomment the two lines below.
       # - node/install-packages:
@@ -37,7 +38,8 @@ jobs:
           path: coverage
       - run:
           name: code-coverage
-          command: npm run coveralls
+          command: npm run test:cov
+
 
 workflows:
   # Below is the definition of your workflow.
