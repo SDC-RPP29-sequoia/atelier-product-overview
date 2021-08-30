@@ -44,11 +44,12 @@ jobs:
           command: npm test
       - store_artifacts:
           path: coverage
-        - run:
+      - run:
           name: code-coverage
           command: npm run coveralls
-        - coveralls/upload
+      - coveralls/upload
     parallelism: 2
+
 
 workflows:
   # Below is the definition of your workflow.
