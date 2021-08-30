@@ -42,7 +42,7 @@ jobs:
       - coveralls/upload:
           path_to_lcov: ./tests/coverage/lcov.info
           parallel: true
-          token:  $COVERALLS_REPO_TOKEN
+          token: COVERALLS_REPO_TOKEN
           verbose: true
 
 
