@@ -29,15 +29,7 @@ jobs:
       - coveralls/upload:
           parallel: true 
           path_to_lcov: tests/coverage/lcov.info 
-      - run: # run code coverage report
-          name: code-coverage
-          command: npm run coveralls
-      - run: # run build
-          name: Build
-          command: npm run build
-      # - coveralls/upload
-
-
+     
 workflows:
   # Below is the definition of your workflow.
   # Inside the workflow, you provide the jobs you want to run, e.g this workflow runs the build-and-test job above.
