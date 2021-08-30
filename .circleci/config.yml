@@ -37,7 +37,7 @@ jobs:
           path: coverage
       - run:
           name: code-coverage
-          command: npm run test:coveralls
+          command: npm run coveralls
 
 workflows:
   # Below is the definition of your workflow.
