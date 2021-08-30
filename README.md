@@ -36,6 +36,8 @@ Circle CI: [![SDC-RPP29-sequoia/atelier-product-overview](https://circleci.com/g
 
 Coveralls [![Coverage Status](https://coveralls.io/repos/github/SDC-RPP29-sequoia/atelier-product-overview/badge.svg?branch=main)](https://coveralls.io/github/SDC-RPP29-sequoia/atelier-product-overview?branch=main)
 
+Codecov: [![codecov](https://codecov.io/gh/SDC-RPP29-sequoia/atelier-product-overview/branch/main/graph/badge.svg?token=5LC9T6YDVJ)](https://codecov.io/gh/SDC-RPP29-sequoia/atelier-product-overview)
+
 # SonarCloud (IP)
 Additionally, [SonarCloud](https://sonarcloud.io/projects) is used for an overall check of code quality.
 
