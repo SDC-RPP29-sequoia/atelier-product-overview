@@ -39,6 +39,7 @@ jobs:
           path: coverage
       - codecov/upload:
           token: CODECOV_TOKEN
+          when: always
       # - coveralls/upload:
       #     path_to_lcov: ./tests/coverage/lcov.info
       #     parallel: true
