@@ -28,7 +28,7 @@ jobs:
           - ./node_modules
       - run: # run tests
           name: test
-          command: npm run test:unit
+          command: npm test
       - run: # run code coverage report
           name: code-coverage
           command: npm run coveralls
