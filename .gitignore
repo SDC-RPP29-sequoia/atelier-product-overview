@@ -113,6 +113,7 @@ __archive__
 testResults
 sonar-report.xml
 login.sh
+.coveralls.yml
 
 *.cer
 *.pem
