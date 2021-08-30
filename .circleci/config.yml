@@ -38,7 +38,7 @@ jobs:
       - store_artifacts:
           path: coverage
       - codecov/upload:
-          token: CODECOV_TOKEN(CODECOV_TOKEN)
+          token: CODECOV_TOKEN
       # - coveralls/upload:
       #     path_to_lcov: ./tests/coverage/lcov.info
       #     parallel: true
