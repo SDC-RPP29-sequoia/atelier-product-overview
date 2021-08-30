@@ -38,6 +38,10 @@ jobs:
       - run:
           name: code-coverage
           command: npm run coveralls
+      - coveralls/upload:
+          path_to_lcov: ./tests/coverage/lcov.info
+          parallel: true
+          verbose: true
 
 
 workflows:
