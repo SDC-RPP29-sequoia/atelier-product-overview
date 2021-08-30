@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest --coverage --testResultsProcessor=jest-sonar-reporter",
     "test-init": "jest --init",
-    "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls",
+    "test:coveralls": "jest --coverage coveralls < tests/coverage/lcov.info",
+    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "start": "nodemon server.js",
     "build": "npx babel . --out-dir ./compiled --source-maps inline --ignore=node_modules,compiled --watch",
     "dev": "npm run build & npm run start & npm run test"
