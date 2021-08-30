@@ -37,7 +37,7 @@ jobs:
           path: coverage
       - run:
           name: code-coverage
-          command: npm run test:cov
+          command: npm run coveralls
 
 
 workflows:
