@@ -26,9 +26,14 @@ jobs:
       - run: # run tests
           name: test
           command: npm test
-      - coveralls/upload:
-          parallel: true 
-          path_to_lcov: tests/coverage/lcov.info 
+      - run:
+          name: code-coverage
+          command: npm run coveralls
+      # - coveralls/upload
+    parallelism: 2
+      # - coveralls/upload:
+      #     parallel: true 
+      #     path_to_lcov: tests/coverage/lcov.info 
      
 workflows:
   # Below is the definition of your workflow.
