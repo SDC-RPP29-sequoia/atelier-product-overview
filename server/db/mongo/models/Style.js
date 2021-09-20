@@ -9,7 +9,8 @@ const styleSchema = new Schema({
   },
   product_id: {
     type: Number,
-    required: true
+    required: true,
+    index: true
   },
   name: {
     type: String,
