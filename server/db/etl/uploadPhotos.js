@@ -33,37 +33,3 @@ csv.parseFile(photos, { headers: ['id', 'styleId', 'url', 'thumbnail_url'] })
   .on('end', () => {
     writeStyleJSON(section, records);
   });
-
-// const uploadPhotos = async () => {
-
-//   records = await readJSON(4);
-
-//   csv.parseFile(features, { headers: true, skipRows: 1000000 })
-//     .on('error', error => console.error('error', error))
-//     .on('data', (row) => {
-
-//       let correctSection = Math.floor(row.product_id / 50000); // 0 - 49,999 === 0
-//       let correctIndex = row.product_id % 50000; // 50,001
-
-//       if (section !== correctSection) {
-
-//         writeJSON(section, records);
-//       }
-
-//       records = records.filter((item) => {
-//         item.styles.forEach(async (style) => {
-//           if (row.styleId === style.id) {
-//             await style.photos.push(row);
-//           }
-//         });
-//         return item;
-//       });
-
-//     })
-//     .on('end', () => {
-//       destinationPhotos.write(JSON.stringify(records));
-//       console.log('Done writing photos');
-//     });
-// };
-
-// uploadPhotos();

@@ -119,3 +119,5 @@ login.sh
 *.pem
 
 Notes.txt
+docs/data
+

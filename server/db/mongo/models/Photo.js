@@ -3,21 +3,12 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const photoSchema = new Schema({
-  id: {
-    type: Number,
-    required: true
-  },
-  url: {
-    type: String,
-    required: true
-  },
-  thumbnail_url: {
-    type: String,
-    required: true
-  }
+  id: {type: Number, required: true},
+  styleId: {type: Number, required: true},
+  url: {type: String, default: null},
+  thumbnail_url: {type: String, default: null}
 });
 
-module.exports.photoSchema = photoSchema;
 const Photo = mongoose.model('Photo', photoSchema);
-
+module.exports.photoSchema = photoSchema;
 module.exports.Photo = Photo;
