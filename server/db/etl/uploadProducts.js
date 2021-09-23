@@ -4,14 +4,11 @@ const path = require('path');
 const csv = require('fast-csv');
 const { writeJSON } = require('./writeJSON.js');
 const { readJSON } = require('./readJSON.js');
-// const destination = fs.createWriteStream('docs/data/json/1.json');
 
 const products = 'docs/data/csv/product.csv';
 let csvData = [];
 let section = 0;
 
-// fs.createReadStream(products)
-//   .pipe(csv.parse({ headers: true, /* maxRows: 50000 */ }))
 csv.parseFile(products, {headers: true})
   .on('error', error => console.error(error))
   .on('data', (row) => {
@@ -38,11 +35,7 @@ csv.parseFile(products, {headers: true})
       styles: [],
       features: [],
     };
-
-    // if (!csvData.includes(newObj)) {
-    csvData[correctIndex] = newObj; // to do
-    // }
-
+    csvData[correctIndex] = newObj;
   })
   .on('end', () => {
 

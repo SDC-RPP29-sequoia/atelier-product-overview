@@ -12,16 +12,4 @@ const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('connected', () => console.log('Mongoose Connected'));
 
-// Get style data with photos and skus
 
-// Product.find({})
-//   .populate('style')
-//   .populate('photo')
-//   .populate('sku')
-//   .exec(function (err, result) {
-//     if (err) {
-//       console.log(err);
-//     } else {
-//       console.log(result);
-//     }
-//   });
