@@ -1,6 +1,6 @@
-const Product = require('./models/Product.js');
-const Style = require('./models/Style.js');
-const Rating = require('./models/Rating.js');
+const Product = require('../models/Product.js');
+const Style = require('../models/Style.js');
+const Rating = require('../models/Rating.js');
 
 const getProducts = async (req, res) => {
   try {
@@ -30,9 +30,10 @@ const getProduct = async (req, res) => {
 };
 
 const getStyles = async (req, res) => {
+  let style;
   try {
     // find styles by product id
-    const style = await Style.find();
+    style = await Style.find({product_id: req.param.id});
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

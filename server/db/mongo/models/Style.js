@@ -9,7 +9,9 @@ const styleSchema = new Schema({
   name: {type: String, required: true},
   sale_price: {type: Number, default: null},
   original_price: {type: Number, required: true},
-  default_style: {type: String, required: true}
+  default_style: {type: String, required: true},
+  skus: { type: Schema.Types.ObjectId, ref: 'Sku'},
+  photos: {type: Schema.Types.ObjectId, ref: 'Photo'},
 });
 
 const Style = mongoose.model('Style', styleSchema);

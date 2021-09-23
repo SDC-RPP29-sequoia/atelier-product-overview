@@ -4,7 +4,7 @@ const csv = require('fast-csv');
 const { writeStyleJSON } = require('./writeStyleJSON.js');
 const { readStyleJSON } = require('./readStyleJSON.js');
 
-const photos = 'docs/data/csv/photos/photos5mil.csv';
+const photos = 'docs/data/csv/photos/photos6mil.csv';
 
 let records = readStyleJSON(0);
 let section = 0;

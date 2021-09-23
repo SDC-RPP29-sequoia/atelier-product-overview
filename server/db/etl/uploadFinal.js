@@ -9,19 +9,17 @@ const { readJSON } = require('./readJSON.js');
 const csvjson = require('csvjson');
 const papa = require('papaparse');
 
-let records = readFinalJSON(0);
-let styleRecords = readStyleJSON(1);
-let section = 0;
-let styleSection = 0;
 
-const uploadFinal = () => {
+let combine = () => {
+  let records = readFinalJSON(1);
+  let styleRecords = readStyleJSON(1);
+  let section = 0;
 
-  styleRecords.forEach((style) => {
+  styleRecords.forEach(async (style) => {
     if (style !== null) {
+
       let correctSection = Math.floor(style.product_id / 50000);
       let correctIndex = style.product_id % 50000;
-      let correctStyleIndex = style.id % 50000;
-      let correctStyleSection = Math.floor(style.id / 49999);
 
       if (section !== correctSection) {
 
@@ -29,15 +27,45 @@ const uploadFinal = () => {
 
         records = readFinalJSON(correctSection);
         section = correctSection;
-      }
 
-      try {
-        records[correctIndex].styles.push(style);
-      } catch (err) {
-        console.log('Catch err: ', err);
+        let number = Number(style.product_id);
       }
+      records[correctIndex].styles.push(style);
     }
   });
   writeFinalJSON(section, records);
 };
-uploadFinal();
+
+combine();
+
+// const uploadFinal = () => {
+  // let correctStyleIndex = style.id % 50000;
+  // let correctStyleSection = Math.floor(style.id / 49999);
+
+  // let correctIndex = style.product_id % 50000;
+
+//   styleRecords.forEach((style) => {
+//     if (style !== null) {
+//       let correctSection = Math.floor(style.product_id / 50000);
+//       let correctIndex = style.product_id % 50000;
+//       let correctStyleIndex = style.id % 50000;
+//       let correctStyleSection = Math.floor(style.id / 49999);
+
+//       if (section !== correctSection) {
+
+//         writeFinalJSON(section, records);
+
+//         records = readFinalJSON(correctSection);
+//         section = correctSection;
+//       }
+
+//       try {
+//         records[correctIndex].styles.push(style);
+//       } catch (err) {
+//         console.log('Catch err: ', err);
+//       }
+//     }
+//   });
+//   writeFinalJSON(section, records);
+// };
+// uploadFinal();
