@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const Product = require('../models/Product.js');
 const Style = require('../models/Style.js');
 const Rating = require('../models/Rating.js');
