@@ -2,7 +2,6 @@
   "name": "atelier-product-overview",
   "version": "1.0.0",
   "description": "API service for handling the 'Product Overview' module of the Atelier shopping app.",
-  "main": "index.js",
   "scripts": {
     "test:cov": "jest && codecov",
     "test": "jest --coverage --testResultsProcessor=jest-sonar-reporter",
@@ -38,18 +37,32 @@
     "@babel/preset-env": "^7.15.0",
     "babel-jest": "^27.0.6",
     "coveralls": "^3.1.1",
+    "dotenv": "^10.0.0",
     "jest": "^27.0.6",
     "jest-cli": "^27.0.6",
     "jest-sonar-reporter": "^2.0.0",
     "nodemon": "^2.0.12"
   },
   "dependencies": {
+    "@fast-csv/format": "^4.3.5",
+    "@fast-csv/parse": "^4.3.6",
+    "axios": "^0.21.4",
     "bluebird": "^3.7.2",
     "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "csvjson": "^5.1.0",
+    "csvtojson": "^2.0.10",
+    "data-forge": "^1.8.17",
+    "data-forge-fs": "^0.0.9",
     "express": "^4.17.1",
-    "mongoose": "^6.0.1"
+    "fast-csv": "^4.3.6",
+    "mongodb": "^4.1.1",
+    "mongoose": "^5.13.8",
+    "papaparse": "^5.3.1",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5"
   },
-
   "jestSonar": {
     "sonar56x": true,
     "reportPath": "reports",
