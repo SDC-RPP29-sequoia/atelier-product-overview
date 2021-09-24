@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 const productsRoute = require('./server/routes');
-app.use('/products', productsRoute);
+app.use('/', productsRoute);
 
 app.listen(port, () => console.log('Port ' + port + ' is on fire!'));
 

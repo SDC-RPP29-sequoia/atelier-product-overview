@@ -26,12 +26,12 @@ csv.parseFile(styles, {headers: true})
     }
 
     let newObj = {
-      id: row.id,
+      style_id: row.id,
       product_id: row.productId,
       name: row.name,
       sale_price: row.sale_price,
       original_price: row.original_price,
-      default_style: row.default_style,
+      'default?': row.default_style === '1' ? true : false,
       skus: {},
       photos: []
     };

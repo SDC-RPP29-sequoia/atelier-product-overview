@@ -32,7 +32,7 @@ csv.parseFile(products, {headers: true})
       description: row.description,
       category: row.category,
       default_price: row.default_price,
-      styles: [],
+      reviews: {results: []},
       features: [],
     };
     csvData[correctIndex] = newObj;

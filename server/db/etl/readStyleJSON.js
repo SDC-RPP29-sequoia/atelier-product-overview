@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports.readStyleJSON = (section) => {
 
-  let filePath = path.resolve(`docs/data/json/styleObject/${section}.json`);
+  let filePath = path.resolve(`docs/data/json/styleObject/test/${section}.json`);
 
   try {
     console.log(`Loading style section ${section}`);

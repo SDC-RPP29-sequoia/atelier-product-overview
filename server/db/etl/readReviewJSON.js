@@ -1,12 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports.readJSON = (section) => {
+module.exports.readReviewJSON = (section) => {
 
-  let filePath = path.resolve(`docs/data/json/product/${section}.json`);
+  let filePath = path.resolve(`docs/data/json/review/${section}.json`);
 
   try {
-    console.log(`Loading section ${section}`);
+    console.log(`Loading review section ${section}`);
     let data = fs.readFileSync(filePath);
     return JSON.parse(data);
   } catch (err) {

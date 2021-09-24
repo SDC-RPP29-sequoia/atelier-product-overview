@@ -1,50 +1,49 @@
 /* eslint-disable camelcase */
-const Product = require('../models/Product.js');
-const Style = require('../models/Style.js');
-const Rating = require('../models/Rating.js');
+const { Product } = require('../models/Product.js');
+const { Style } = require('../models/Style.js');
+const helper = require('./helper.js');
 
 const getProducts = async (req, res) => {
   try {
-    const productId = req.query.id;
     // add page and count
-
-    const products = await Product.find();
+    const products = await Product.find({});
     res.json(products);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-  res.send('Getting all products');
 };
 
 const getProduct = async (req, res) => {
+  const inputId = req.url.split('=')[1];
   let product;
   try {
-    product = await Product.findById(req.params.id);
+    product = await Product.find({ id: parseInt(inputId) });
+    helper.checkProduct(product[0]);
+
+    res.json(product[0]);
     if (product === null) {
       return res.status(404).json({ message: 'Cannot find product' });
     }
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
-  res.product = product;
-  next();
 };
 
 const getStyles = async (req, res) => {
-  let style;
+  const inputId = req.url.split('=')[1].split('/')[0];
+  let styles;
+  let response = { product_id: inputId };
   try {
-    // find styles by product id
-    style = await Style.find({product_id: req.param.id});
+    styles = await Style.find({ product_id: inputId });
+    helper.checkStyle(styles, inputId);
+
+    response.results = styles;
+    res.json(response);
+    if (styles === null) {
+      return res.status(404).json({ message: 'Cannot find styles' });
+    }
   } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
-
-const getRatings = async (req, res) => {
-  try {
-
-  } catch (err) {
-
+    return res.status(500).json({ message: err.message });
   }
 };
 
@@ -52,5 +51,4 @@ module.exports = {
   getProducts,
   getProduct,
   getStyles,
-  getRatings
 };
