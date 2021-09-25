@@ -22,10 +22,7 @@ const randomNum = async () => {
 };
 
 describe('Connect to Mongoose', () => {
-  let connection;
-
   beforeAll(() => {
-    let connection;
     mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
     const db = mongoose.connection;
@@ -51,7 +48,6 @@ describe('Connect to Mongoose', () => {
       describe('random product between 100k and 200k', () => {
         it(`should take an input of empty styles array and output a temporary mock array for product id 11`, async () => {
           const inputId = await randomNum();
-          let response = { product_id: inputId };
           const styles = await Style.find({ product_id: inputId }).explain().then(res => res[0]);
           const executionTime = styles.executionStats.executionTimeMillis;
           expect(executionTime).toBe(0);

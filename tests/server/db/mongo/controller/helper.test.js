@@ -22,10 +22,7 @@ const randomNum = async () => {
 
 
 describe('Connect to Mongoose', () => {
-  let connection;
-
   beforeAll(() => {
-    let connection;
     mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
 
     const db = mongoose.connection;
@@ -44,7 +41,6 @@ describe('Connect to Mongoose', () => {
         it(`should take an input of a styles array and output an array of all styles for a random product id`, async () => {
           const inputId = await randomNum();
           let styles;
-          let response = { product_id: inputId };
           styles = await Style.find({ product_id: inputId });
           const finalStyles = helper.checkStyle(styles, inputId);
           expect(Array.isArray(styles)).toEqual(true);
@@ -56,7 +52,6 @@ describe('Connect to Mongoose', () => {
         it(`should take an input of empty styles array and output a temporary mock array for product id 11`, async () => {
           let styles;
           const inputId = '11';
-          let response = { product_id: inputId };
           styles = await Style.find({ product_id: inputId });
           expect(styles.length).toEqual(0);
           const finalStyles = helper.checkStyle(styles, inputId);
