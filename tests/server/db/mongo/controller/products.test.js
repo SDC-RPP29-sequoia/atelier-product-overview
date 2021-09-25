@@ -8,23 +8,17 @@ const { Style } = require('../../../../../server/db/mongo/models/Style.js');
 const helper = require('../../../../../server/db/mongo/controller/helper.js');
 
 
-const getRandomIntInclusive = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-const getRandomNumbers = (first, last) => {
-  const numberObj = {};
-  const rando1 = getRandomIntInclusive(first, last);
-  const rando2 = getRandomIntInclusive(first, last);
-  const rando3 = getRandomIntInclusive(first, last);
-  const rando4 = getRandomIntInclusive(first, last);
-  numberObj.first = rando1;
-  numberObj.second = rando2;
-  numberObj.third = rando3;
-  numberObj.forth = rando4;
+const randomNum = async () => {
+  const { randomInt } = await import('crypto');
 
-  const unique = Array.from(new Set(Object.values(numberObj)));
-  if (!unique.length === 4) {
-    return getRandomNumbers(first, last);
-  }
-  return numberObj;
+  randomInt(1000011, (err, n) => {
+    if (err) {
+      throw err;
+    } else {
+      console.log(`Random number chosen from (0, 1000011): ${n}`);
+      return n;
+    }
+  });
 };
 
 describe('Connect to Mongoose', () => {
@@ -47,19 +41,16 @@ describe('Connect to Mongoose', () => {
   describe('Mongo Queries', () => {
     describe('query speed', () => {
       describe('random product between 1 - 100k', () => {
-        const random = getRandomNumbers(1, 25000);
-        it(`should return a query in less than 5ms for product id ${random.first}`, async () => {
-          const inputId = random.first;
+        it(`should return a query in less than 5ms for a random product id`, async () => {
+          const inputId = await randomNum();
           const product = await Product.find({ id: inputId }).explain().then(res => res[0]);
           const executionTime = product.executionStats.executionTimeMillis;
           expect(executionTime).toBe(4);
         });
       });
       describe('random product between 100k and 200k', () => {
-        const random = getRandomNumbers(1, 25000);
-
         it(`should take an input of empty styles array and output a temporary mock array for product id 11`, async () => {
-          const inputId = random.first;
+          const inputId = await randomNum();
           let response = { product_id: inputId };
           const styles = await Style.find({ product_id: inputId }).explain().then(res => res[0]);
           const executionTime = styles.executionStats.executionTimeMillis;
@@ -69,10 +60,9 @@ describe('Connect to Mongoose', () => {
       });
     });
     xdescribe('random product between 200k - 300k', () => {
-      const random = getRandomNumbers(1, 25000);
-      it(`should take an input of a product and output an object for product id ${random.first}`, async () => {
+      it(`should take an input of a product and output an object for a random product id`, async () => {
         let product;
-        const inputId = random.first;
+        const inputId = await randomNum();
         product = await Product.find({ id: parseInt(inputId) });
         expect(Array.isArray(product)).toEqual(true);
         expect(typeof product[0]).toEqual('object');

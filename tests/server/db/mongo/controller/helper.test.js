@@ -7,25 +7,19 @@ const { Product } = require('../../../../../server/db/mongo/models/Product.js');
 const { Style } = require('../../../../../server/db/mongo/models/Style.js');
 const helper = require('../../../../../server/db/mongo/controller/helper.js');
 
+const randomNum = async () => {
+  const { randomInt } = await import('crypto');
 
-const getRandomIntInclusive = (min, max) => Math.floor(Math.random() * (max - min + 1) + min);
-const getRandomNumbers = (first, last) => {
-  const numberObj = {};
-  const rando1 = getRandomIntInclusive(first, last);
-  const rando2 = getRandomIntInclusive(first, last);
-  const rando3 = getRandomIntInclusive(first, last);
-  const rando4 = getRandomIntInclusive(first, last);
-  numberObj.first = rando1;
-  numberObj.second = rando2;
-  numberObj.third = rando3;
-  numberObj.forth = rando4;
-
-  const unique = Array.from(new Set(Object.values(numberObj)));
-  if (!unique.length === 4) {
-    return getRandomNumbers(first, last);
-  }
-  return numberObj;
+  randomInt(1000011, (err, n) => {
+    if (err) {
+      throw err;
+    } else {
+      console.log(`Random number chosen from (0, 1000011): ${n}`);
+      return n;
+    }
+  });
 };
+
 
 describe('Connect to Mongoose', () => {
   let connection;
@@ -47,10 +41,9 @@ describe('Connect to Mongoose', () => {
   describe('Helper Methods', () => {
     describe('checkStyles', () => {
       describe('random product between 1 - 100k', () => {
-        const random = getRandomNumbers(1, 25000);
-        it(`should take an input of a styles array and output an array of all styles for product id ${random.first}`, async () => {
+        it(`should take an input of a styles array and output an array of all styles for a random product id`, async () => {
+          const inputId = await randomNum();
           let styles;
-          const inputId = random.first;
           let response = { product_id: inputId };
           styles = await Style.find({ product_id: inputId });
           const finalStyles = helper.checkStyle(styles, inputId);
@@ -76,20 +69,19 @@ describe('Connect to Mongoose', () => {
     });
     describe('checkProduct', () => {
       describe('random product between 1 - 100k', () => {
-        const random = getRandomNumbers(1, 25000);
-        it(`should take an input of a product and output an object for product id ${random.first}`, async () => {
+        it(`should take an input of a product and output an object for a random product id`, async () => {
+          let inputId = await randomNum();
           let product;
-          const inputId = random.first;
           product = await Product.find({ id: parseInt(inputId) });
           expect(Array.isArray(product)).toEqual(true);
-          expect(typeof product[0]).toEqual('object');
+          expect(typeof product).toEqual('object');
         });
       });
       describe('Product with no feature value', () => {
         it(`should accept a product object with no feature value and output a product with added mock feature value`, async () => {
           let product;
           const inputId = '2';
-          product = await Product.find({ id: parseInt(inputId)});
+          product = await Product.find({ id: parseInt(inputId) });
           expect(Array.isArray(product)).toEqual(true);
           expect(typeof product[0]).toEqual('object');
           let finalProduct = helper.checkProduct(product[0]);
