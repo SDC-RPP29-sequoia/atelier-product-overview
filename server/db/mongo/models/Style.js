@@ -3,15 +3,14 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const styleSchema = new Schema({
-  id: {type: Number, required: true},
-  product_id: {type: Number, required: true, index: true
-  },
+  id: {type: String, required: true},
+  product_id: {type: String, required: true, index: true},
   name: {type: String, required: true},
   sale_price: {type: Number, default: null},
   original_price: {type: Number, required: true},
-  default_style: {type: String, required: true},
-  skus: { type: Schema.Types.ObjectId, ref: 'Sku'},
-  photos: {type: Schema.Types.ObjectId, ref: 'Photo'},
+  default_style: {type: Boolean, required: true},
+  skus: {type: Object},
+  photos: {type: Array},
 });
 
 const Style = mongoose.model('Style', styleSchema);

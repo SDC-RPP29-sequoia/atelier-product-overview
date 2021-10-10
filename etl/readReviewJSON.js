@@ -1,12 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports.readStyleJSON = (section) => {
+module.exports.readReviewJSON = (section) => {
 
-  let filePath = path.resolve(`docs/data/json/styleObject/${section}.json`);
+  let filePath = path.resolve(`docs/data/json/review/${section}.json`);
 
   try {
-    console.log(`Loading style section ${section}`);
+    console.log(`Loading review section ${section}`);
     let data = fs.readFileSync(filePath);
     return JSON.parse(data);
   } catch (err) {

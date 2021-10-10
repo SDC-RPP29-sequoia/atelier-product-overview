@@ -2,14 +2,14 @@
 const fs = require('fs');
 const path = require('path');
 const csv = require('fast-csv');
-const { writeStyleJSON } = require('./writeStyleJSON.js');
-const { readStyleJSON } = require('./readStyleJSON.js');
+const { writeJSON } = require('./writeJSON.js');
+const { readJSON } = require('./readJSON.js');
 
-const styles = 'docs/data/csv/styles.csv';
+const products = 'docs/data/csv/product.csv';
 let csvData = [];
 let section = 0;
 
-csv.parseFile(styles, {headers: true})
+csv.parseFile(products, {headers: true})
   .on('error', error => console.error(error))
   .on('data', (row) => {
 
@@ -19,27 +19,26 @@ csv.parseFile(styles, {headers: true})
     // evaluate if not in correct section
     if (section !== correctSection) {
       // save our current records to [section].json
-      writeStyleJSON(section, csvData);
+      writeJSON(section, csvData);
       // load correct records from csvData = [correctSection].json
-      csvData = readStyleJSON(correctSection);
+      csvData = readJSON(correctSection);
       section = correctSection;
     }
 
     let newObj = {
       id: row.id,
-      product_id: row.productId,
       name: row.name,
-      sale_price: row.sale_price,
-      original_price: row.original_price,
-      default_style: row.default_style,
-      skus: {},
-      photos: []
+      slogan: row.slogan,
+      description: row.description,
+      category: row.category,
+      default_price: row.default_price,
+      reviews: {results: []},
+      features: [],
     };
-
     csvData[correctIndex] = newObj;
   })
   .on('end', () => {
 
-    writeStyleJSON(section, csvData);
+    writeJSON(section, csvData);
     console.log('Done writing products');
   });

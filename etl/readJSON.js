@@ -3,7 +3,7 @@ const path = require('path');
 
 module.exports.readJSON = (section) => {
 
-  let filePath = path.resolve(`docs/data/json/${section}.json`);
+  let filePath = path.resolve(`docs/data/json/product/${section}.json`);
 
   try {
     console.log(`Loading section ${section}`);

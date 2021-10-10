@@ -9,9 +9,9 @@
     "test-init": "jest --init",
     "test:coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "coveralls": "jest --coverage && coveralls < tests/coverage/lcov.info",
-    "start": "nodemon server.js",
+    "start": "NODE_ENV=production node server.js",
     "build": "npx babel . --out-dir ./compiled --source-maps inline --ignore=node_modules,compiled --watch",
-    "dev": "npm run build & npm run start & npm run test"
+    "dev": "NODE_ENV=development npm run build & npm run start & npm run test"
   },
   "repository": {
     "type": "git",
@@ -44,8 +44,10 @@
     "nodemon": "^2.0.12"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.34.0",
     "@fast-csv/format": "^4.3.5",
     "@fast-csv/parse": "^4.3.6",
+    "@shelf/jest-mongodb": "^2.0.3",
     "axios": "^0.21.4",
     "bluebird": "^3.7.2",
     "cors": "^2.8.5",
@@ -61,6 +63,7 @@
     "papaparse": "^5.3.1",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
+    "redis": "^3.1.2",
     "sequelize": "^6.6.5"
   },
   "jestSonar": {
