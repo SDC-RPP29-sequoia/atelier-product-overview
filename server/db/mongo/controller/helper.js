@@ -10,7 +10,6 @@ module.exports = {
   },
 
   checkStyle: (styles, inputId) => {
-    console.log('styles:', styles);
     if (styles.length !== 0) {
       styles.forEach((style) => {
         if (style.photos.length === 0) {

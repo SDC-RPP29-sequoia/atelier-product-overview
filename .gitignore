@@ -118,6 +118,9 @@ login.sh
 *.cer
 *.pem
 
+etc/
+dump/
+
 Notes.txt
 docs/data
 
